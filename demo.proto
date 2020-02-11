@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package demo;
+
+message Request {
+    Person request_data = 1;
+}
+
+message StrRequest {
+    string request_data = 1;
+}
+
+message Response {
+    AddressBook response_data = 1;
+}
+
+message StrResponse {
+    string response_data = 1;
+}
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}
+
+service GRPCDemo {
+    rpc SimpleGetMethod (StrRequest) returns (Response);
+
+    rpc SimplePostMethod (Request) returns (StrResponse);
+}
+
